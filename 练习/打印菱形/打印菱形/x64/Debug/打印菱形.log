@@ -1,0 +1,4 @@
+﻿  FileName.c
+D:\修\code\练习\打印菱形\打印菱形\FileName.c(5,2): warning C4013: “scanf”未定义；假设外部返回 int
+D:\修\code\练习\打印菱形\打印菱形\FileName.c(13,5): warning C4013: “printf”未定义；假设外部返回 int
+  打印菱形.vcxproj -> D:\修\code\练习\打印菱形\x64\Debug\打印菱形.exe

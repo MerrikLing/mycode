@@ -1,0 +1,3 @@
+﻿  FileName.c
+D:\修\code\练习\逆序字符串\逆序字符串\FileName.c(18,10): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  逆序字符串.vcxproj -> D:\修\code\练习\逆序字符串\x64\Debug\逆序字符串.exe
