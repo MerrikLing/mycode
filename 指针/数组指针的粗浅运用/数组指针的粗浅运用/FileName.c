@@ -19,7 +19,17 @@ int main()
 	int a[3][5] = { 1,2,3,4,5,6,7,8,9,10 };
 	int(*p)[5] = a;
 	print(a);
+	int n, d;
+	n = 1;d = 2;
+	printf("\n%d %d", n,d);
 	//printf("%p ", p);
 	//printf("%p", p+1);
+	//int* b[3] = { 0 };
+	//b[0] = &a[0][0];
+	//int*(*bp)[3] = &b[3];
+	//printf("%p", bp);
+	//printf("\n%p", bp+1);
+	//int* c = NULL;
+	//printf("%p", c);
 	return 0;
 }
