@@ -1,0 +1,3 @@
+﻿  FileName.c
+D:\修\code\指针\qsort函数使用\qsort函数使用\FileName.c(11,2): warning C4013: “qsort”未定义；假设外部返回 int
+  qsort函数使用.vcxproj -> D:\修\code\指针\qsort函数使用\x64\Debug\qsort函数使用.exe
