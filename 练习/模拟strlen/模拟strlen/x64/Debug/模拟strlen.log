@@ -1,4 +1,0 @@
-﻿  FileName.c
-D:\修\code\练习\模拟strlen\模拟strlen\FileName.c(10,11): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
-D:\修\code\练习\模拟strlen\模拟strlen\FileName.c(7,8): warning C4090: “初始化”: 不同的“const”限定符
-  模拟strlen.vcxproj -> D:\修\code\练习\模拟strlen\x64\Debug\模拟strlen.exe

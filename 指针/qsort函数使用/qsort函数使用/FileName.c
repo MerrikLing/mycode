@@ -24,7 +24,7 @@ int main()
 		printf("%d ", a[i]);
 	
 	printf("\n");
-	struct stu s[] = { {"张三",250},{"李四",10} ,{"王五",20} };
+	struct stu s[] = { {"张三",250},{"李四",1000} ,{"王五",20} };
 	int sz_s = sizeof(s) / sizeof(s[0]);
 	qsort(s, sz_s, sizeof(s[0]), m_cmp);
 	for (int j = 0;j < sz_s;j++)
