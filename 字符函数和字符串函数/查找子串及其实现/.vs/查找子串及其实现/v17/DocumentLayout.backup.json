@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Merrik\\code\\\u5B57\u7B26\u51FD\u6570\u548C\u5B57\u7B26\u4E32\u51FD\u6570\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46B570B6-EE3C-4D9C-B477-9FF03C059D66}|\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0.vcxproj|D:\\Merrik\\code\\\u5B57\u7B26\u51FD\u6570\u548C\u5B57\u7B26\u4E32\u51FD\u6570\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{46B570B6-EE3C-4D9C-B477-9FF03C059D66}|\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0.vcxproj|solutionrelative:\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileName.c",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5B57\u7B26\u51FD\u6570\u548C\u5B57\u7B26\u4E32\u51FD\u6570\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\FileName.c",
+              "RelativeDocumentMoniker": "\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\FileName.c",
+              "ToolTip": "D:\\Merrik\\code\\\u5B57\u7B26\u51FD\u6570\u548C\u5B57\u7B26\u4E32\u51FD\u6570\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\FileName.c*",
+              "RelativeToolTip": "\u67E5\u627E\u5B50\u4E32\u53CA\u5176\u5B9E\u73B0\\FileName.c*",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-28T14:51:16.436Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

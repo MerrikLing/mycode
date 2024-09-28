@@ -1,0 +1,4 @@
+﻿  FileName.c
+D:\Merrik\code\字符函数和字符串函数\查找子串及其实现\查找子串及其实现\FileName.c(17,5): warning C4090: “return”: 不同的“const”限定符
+D:\Merrik\code\字符函数和字符串函数\查找子串及其实现\查找子串及其实现\FileName.c(12,9): warning C4090: “初始化”: 不同的“const”限定符
+  查找子串及其实现.vcxproj -> D:\Merrik\code\字符函数和字符串函数\查找子串及其实现\查找子串及其实现\x64\Debug\查找子串及其实现.exe
