@@ -1,0 +1,4 @@
+﻿  FileName.c
+D:\Merrik\code\字符函数和字符串函数\认识strerror\认识strerror\FileName.c(12,17): warning C4013: “tolower”未定义；假设外部返回 int
+D:\Merrik\code\字符函数和字符串函数\认识strerror\认识strerror\FileName.c(15,17): warning C4013: “toupper”未定义；假设外部返回 int
+  认识strerror.vcxproj -> D:\Merrik\code\字符函数和字符串函数\认识strerror\认识strerror\x64\Debug\认识strerror.exe
