@@ -1,0 +1,7 @@
+﻿  FileName.c
+D:\Merrik\code\Practice\小练习\小练习\FileName.c(65,8): warning C4013: “strlen”未定义；假设外部返回 int
+D:\Merrik\code\Practice\小练习\小练习\FileName.c(66,17): warning C4474: scanf: 格式字符串中传递的参数太多
+      D:\Merrik\code\Practice\小练习\小练习\FileName.c(66,17):
+      占位符和其参数预计 1 可变参数，但提供的却是 2 参数
+  
+  小练习.vcxproj -> D:\Merrik\code\Practice\小练习\x64\Debug\小练习.exe
