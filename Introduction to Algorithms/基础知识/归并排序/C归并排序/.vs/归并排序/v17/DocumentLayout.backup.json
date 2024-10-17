@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\",
+  "WorkspaceRootPath": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\C\u5F52\u5E76\u6392\u5E8F\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C2E115FF-CA11-47D3-AD10-230C67B2F4F5}|\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F.vcxproj|D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C2E115FF-CA11-47D3-AD10-230C67B2F4F5}|\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F.vcxproj|D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\C\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C2E115FF-CA11-47D3-AD10-230C67B2F4F5}|\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F.vcxproj|solutionrelative:\u5F52\u5E76\u6392\u5E8F\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "FileName.c",
-              "DocumentMoniker": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\FileName.c",
+              "DocumentMoniker": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\C\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\FileName.c",
               "RelativeDocumentMoniker": "\u5F52\u5E76\u6392\u5E8F\\FileName.c",
-              "ToolTip": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\FileName.c",
+              "ToolTip": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u5F52\u5E76\u6392\u5E8F\\C\u5F52\u5E76\u6392\u5E8F\\\u5F52\u5E76\u6392\u5E8F\\FileName.c",
               "RelativeToolTip": "\u5F52\u5E76\u6392\u5E8F\\FileName.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAUwCMAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-10-16T15:33:19.717Z",
               "EditorCaption": ""
