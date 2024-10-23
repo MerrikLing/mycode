@@ -1,0 +1,39 @@
+#升序
+def Merge(list,p,q,r):
+    tem=list[p:r+1]
+    index1 = 0
+    index2 = q + 1 - p
+    i = p
+    while index1<=q-p and index2<= r-p:
+        if tem[index1]<=tem[index2]:
+            list[i]=tem[index1]
+            i+=1;index1+=1
+        else:
+            list[i]=tem[index2]
+            i+=1;index2+=1
+    #一种实现方法
+    if index1<=q-p:
+        list[i:r+1]=tem[index1:q-p+1]
+    else:
+        list[i:r+1]=tem[index2:]
+
+    #另一种实现方法
+    # while index1<=q-p:
+    #     list[i]=tem[index1]
+    #     i+=1;index1+=1
+    # while index2<= r-p:
+    #     list[i]=tem[index2]
+    #     i+=1;index2+=1
+
+def MergeSort(list,p,r):
+    if p>=r:
+        return
+    q=(p+r)//2
+    MergeSort(list,p,q)
+    MergeSort(list,q+1,r)
+    Merge(list,p,q,r)
+
+list=[4,7,19,12,1,9,3,6,2]
+MergeSort(list,0,len(list)-1)
+for i in list:
+    print(i,end=" ")

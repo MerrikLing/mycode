@@ -1,21 +1,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-#define A a
-int f()
-{
-	return 2 == 1;
-}
+#include<assert.h>
 int main()
 {
-	int x = 0;
-	int y = 0;
-	int i = 2;
-	int ret = f();
-	//printf("%d", ret);
-	if (2 == 2.0)
-		printf("equal");
-	else
-		printf("inequal");
-
+	int* d = (int*)malloc(80);
+	assert(d);
+	*(d + 1) = 19;
+	free(d);
+	d = NULL;
 	return 0;
 }
