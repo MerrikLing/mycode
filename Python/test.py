@@ -1,3 +1,4 @@
-list=[1,2,3,4,5,9]
-sum(list)
-sum(([[1],[3],[4],[9]]),[])
+for i in range(7):
+    print(i,end=' ')
+    if i==4:
+        break
