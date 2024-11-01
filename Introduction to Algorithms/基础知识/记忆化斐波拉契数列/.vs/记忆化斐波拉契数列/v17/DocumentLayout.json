@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{591022CD-F485-46E0-9E8F-753C9F30EE5B}|\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217.vcxproj|D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{591022CD-F485-46E0-9E8F-753C9F30EE5B}|\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217.vcxproj|solutionrelative:\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileName.c",
+              "DocumentMoniker": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\FileName.c",
+              "RelativeDocumentMoniker": "\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\FileName.c",
+              "ToolTip": "D:\\Merrik\\code\\Introduction to Algorithms\\\u57FA\u7840\u77E5\u8BC6\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\FileName.c",
+              "RelativeToolTip": "\u8BB0\u5FC6\u5316\u6590\u6CE2\u62C9\u5951\u6570\u5217\\FileName.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-01T07:34:56.699Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
