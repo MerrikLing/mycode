@@ -1,17 +1,24 @@
-# # for i in range(7):
-# #     print(i,end=' ')
-# #     if i==4:
-# #         break
-# a1=[1,2,3]
-# a2=[1,2,3]
-# a19=[1,2,3]
-# b=[12,19]
-# # a1.append(b)
-# a2 +=[b]
-# a19 += b
-# b.append(9)
-# print(a2);print(a19);
-if ((a:=10)>5):
-    print(True)
-else:
-    print(False)
+class Account:
+    """
+    >>> a=Account('John')
+    >>> a.deposit(100)
+    100
+    >>> a.withdraw(90)
+    10
+    >>> a.withdraw(90)
+    dreaming!
+    """
+    def interest():
+        return 0.02
+    # interest=lambda:0.03
+    def __init__(self,account_holder):
+        self.balance = 0
+        self.holder = account_holder
+    def deposit(self,money):
+        self.balance += money
+        return self.balance
+    def withdraw(self,money):
+        if money>self.balance:
+            return 'dreaming!'
+        self.balance-=money
+        return self.balance
