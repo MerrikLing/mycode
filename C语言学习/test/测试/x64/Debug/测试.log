@@ -1,5 +1,2 @@
-﻿  FileName.c
-D:\Merrik\code\C语言学习\test\测试\FileName.c(6,17): warning C4013: “malloc”未定义；假设外部返回 int
-D:\Merrik\code\C语言学习\test\测试\FileName.c(6,11): warning C4312: “类型强制转换”: 从“int”转换到更大的“int *”
-D:\Merrik\code\C语言学习\test\测试\FileName.c(9,2): warning C4013: “free”未定义；假设外部返回 int
+﻿  FileName.cpp
   测试.vcxproj -> D:\Merrik\code\C语言学习\test\x64\Debug\测试.exe

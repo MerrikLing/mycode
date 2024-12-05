@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7B110887-0872-4A0B-ADC7-FCDE687BF3C4}|\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\FileName.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B110887-0872-4A0B-ADC7-FCDE687BF3C4}|\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5.vcxproj|solutionrelative:\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\FileName.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileName.cpp",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\FileName.cpp",
+              "RelativeDocumentMoniker": "\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\FileName.cpp",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\FileName.cpp",
+              "RelativeToolTip": "\u56FE\u5F62\u5316\u754C\u9762\u6D4B\u8BD5\\FileName.cpp",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAAAPAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-29T01:20:27.12Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

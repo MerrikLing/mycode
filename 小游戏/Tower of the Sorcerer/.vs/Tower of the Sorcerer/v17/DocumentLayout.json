@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\functions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|solutionrelative:Tower of the Sorcerer\\functions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\main body.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|solutionrelative:Tower of the Sorcerer\\main body.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\visualization.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|solutionrelative:Tower of the Sorcerer\\visualization.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\data.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|solutionrelative:Tower of the Sorcerer\\data.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\head.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9152F873-77B0-429E-AC78-6FF72E989139}|Tower of the Sorcerer\\Tower of the Sorcerer.vcxproj|solutionrelative:Tower of the Sorcerer\\head.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "head.hpp",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\head.hpp",
+              "RelativeDocumentMoniker": "Tower of the Sorcerer\\head.hpp",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\head.hpp",
+              "RelativeToolTip": "Tower of the Sorcerer\\head.hpp",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAADwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-28T05:06:04.436Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "data.cpp",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\data.cpp",
+              "RelativeDocumentMoniker": "Tower of the Sorcerer\\data.cpp",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\data.cpp",
+              "RelativeToolTip": "Tower of the Sorcerer\\data.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-03T23:13:55.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "visualization.cpp",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\visualization.cpp",
+              "RelativeDocumentMoniker": "Tower of the Sorcerer\\visualization.cpp",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\visualization.cpp",
+              "RelativeToolTip": "Tower of the Sorcerer\\visualization.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-30T05:53:16.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main body.cpp",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\main body.cpp",
+              "RelativeDocumentMoniker": "Tower of the Sorcerer\\main body.cpp",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\main body.cpp",
+              "RelativeToolTip": "Tower of the Sorcerer\\main body.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-28T05:02:20.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "functions.cpp",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\functions.cpp",
+              "RelativeDocumentMoniker": "Tower of the Sorcerer\\functions.cpp",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\Tower of the Sorcerer\\Tower of the Sorcerer\\functions.cpp",
+              "RelativeToolTip": "Tower of the Sorcerer\\functions.cpp",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAAAHoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-28T08:28:35.509Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
