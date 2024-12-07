@@ -1,24 +1,12 @@
 #include"head.hpp"
 //可以考虑把地图放进文档中，通过读文档来进行地图生成
 
-//class Player {
-//public:
-//	int position[3] = { 0, 5,1 };//初始：第一层 第六行 第二列
-//	int hp = 30;
-//	int atk = 10;
-//	int def = 10;
-//	int money = 0;
-//	int Lv = 1;
-//	int Exp = 0;
-//	int yellow_key = 0;
-//	int blue_key = 0;
-//};
 Player::Player()
 {                    //初始：第一层 第六行 第二列
 	position[0] = 0; position[1] = 5;  position[2] = 1;
 	hp = 1000;	atk = 10;	def = 5;	money = 1;
-	Lv = 1;		Exp = 0;	yellow_key = 2;	blue_key = 3;
-	red_key = 4; pickaxe = 5;
+	Lv = 1;		Exp = 49;	yellow_key = 0;	blue_key = 0;
+	red_key = 0; pickaxe = 0;
 }
 
 Monster::Monster(int hp, int atk, int def, int exp, int gold/* char* name*/) : hp(hp), atk(atk), def(def), exp(exp), money(gold) {

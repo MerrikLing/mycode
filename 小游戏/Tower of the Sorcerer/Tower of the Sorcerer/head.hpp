@@ -58,6 +58,8 @@ void InitImage();
 void PrintMap(int map[][COL], Player& p);    //Í¼ÐÎ»¯
 void PrintInfor(char* name, int d_hp, int money, int exp);
 void PrintInfor(char* name, int addHP);
+void PrintNoKey();
+void PrintLvUp();
 //map
 extern int Map[FLOOR][ROW][COL];
 

@@ -1,6 +1,5 @@
 #include"head.hpp"
 //先实现控制台版本，再实现图形化版本
-// 地图也用类吗？
 // 
 // 创建不同属性的角色？ 增加宝箱，随机生成效果？ 增加解谜？
 // 增加对敌手册
@@ -9,14 +8,14 @@
 //升级函数 显示属性 手册  剑盾 宝石
 //职业 魔药 多门 隐藏地图 多地图
 
+//增加人物左右移动的图形？ 下：原图，上：背影
 //存在的问题：
-//对战的函数可能有问题，测试似乎不对  //增加一击毙命效果
-//显示 捡药水
+//
+//
 int main()
 {start:
-	//printf("Brave warrior, welcome to the Tower of Sorcerer.\nPlease use your wisdom and courage to defeat the demon king and rescue the imprisoned princess! \n\n(Press any key to start the game)");
-	//_getch();
-		//ShowWindow(GetConsoleWindow(), SW_HIDE); //隐藏控制台？
+		/*printf("Brave warrior, welcome to the Tower of Sorcerer.\nPlease use your wisdom and courage to defeat the demon king and rescue the imprisoned princess! \n\n(Press any key to start the game)");
+		_getch();*/
 		//初始化
 		Player P;
 		//zheshiweistingshusogohfoe
