@@ -21,18 +21,51 @@ void set_new_position(int position[], int r, int c)
 //对战
 void PK(Player& p, const Monster& m)
 {
+	//int l = m.hp;
+	//if (p.atk - m.def >= l)  //一击毙命
+	//	return;
+	//while (p.hp > 0 && l > 0)
+	//{
+	//	if (p.def < m.atk)
+	//		p.hp -= m.atk - p.def;
+	//	if (m.def < p.atk)
+	//		l -= p.atk - m.def;
+	//}
+	//if (p.hp < 0)
+	//	p.hp = 0;
+
+	//int damage = Damage(p, m);
+	//switch (damage)
+	//{
+	//case -1:
+	//{
+	//	p.hp = 0;
+	//	break;
+	//}
+	//default:
+	//	p.hp -= damage;
+	//}
+	p.hp -= Damage(p, m);
+}
+
+//计算怪物对玩家伤害
+int Damage(Player& p, const Monster& m)
+{
+	int hp = p.hp;
 	int l = m.hp;
 	if (p.atk - m.def >= l)  //一击毙命
-		return;
-	while (p.hp > 0 && l > 0)
+		return 0;
+	while (hp > 0 && l > 0)
 	{
 		if (p.def < m.atk)
-			p.hp -= m.atk - p.def;
+			hp -= m.atk - p.def;
 		if (m.def < p.atk)
 			l -= p.atk - m.def;
 	}
-	if (p.hp < 0)
-		p.hp = 0;
+	if (hp <= 0)
+		return p.hp; //死亡
+	else
+		return p.hp - hp;
 }
 
 //升级
@@ -40,9 +73,11 @@ void PK(Player& p, const Monster& m)
 //提升：血量加 100， 攻击 加5，防御加 5
 void LvUp(Player& p)
 {
-	p.hp += 100;
-	p.atk += 5;
-	p.def += 5;
+	p.hp_limit += 50;
+	p.atk += 2;
+	p.def += 2;
+	p.Lv += 1;
+	musicLvUp();
 	PrintLvUp();
 }
 
@@ -81,9 +116,16 @@ int Battle(int map[][COL], Player& p, Monster& m, char* name, \
 
 
 
-int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, int direction_picture_number)
+int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
+	int direction_picture_number,int direction) //direction 4 5 6 7分别表示上下左右
 {
 	int hp = p.hp;
+
+	if (map[r][c] == 39)  //找到公主——胜利
+	{
+		return 3;//胜利
+	}
+
 	//空地
 	if (map[r][c] == 7)
 	{
@@ -95,9 +137,19 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, int direc
 		//黄色
 	if (map[r][c] == 4)
 	{
+		musicPickup();
 		map[r1][c1] = 7;
 		map[r][c] = direction_picture_number;
 		p.yellow_key += 1;
+		return 0;
+	}
+
+	if (map[r][c] == 17)  //蓝色钥匙
+	{
+		musicPickup();
+		map[r1][c1] = 7;
+		map[r][c] = direction_picture_number;
+		p.blue_key += 1;
 		return 0;
 	}
 	//门：有没有钥匙  
@@ -112,99 +164,212 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, int direc
 			return 0;
 		}
 		//有钥匙
+		musicEnter();
 		map[r1][c1] = 7;
 		map[r][c] = direction_picture_number;
 		p.yellow_key -= 1;
 		return 0;
 	}
 
+	if (map[r][c] == 18)   //蓝色门
+	{
+		if (p.blue_key < 1)
+		{
+			//坐标重置回来
+			set_new_position(p.position, r1, c1);
+			PrintNoKey();
+			return 0;
+		}
+		//有钥匙
+		musicEnter();
+		map[r1][c1] = 7;
+		map[r][c] = direction_picture_number;
+		p.blue_key -= 1;
+		return 0;
+	}
+
 	//怪物：死亡或击败，击败会获得经验与金币   判断血量
-		//史莱姆酱 6
+		//绿色史莱姆酱 6
 	if (map[r][c] == 6)
 	{
-		char gs[] = "Green Slime";//传入名字
-		return Battle(map, p, GreenSlime, gs, r1, c1, r, c, hp, direction_picture_number);
+		musicBattle();
+		char name[] = "Green Slime";//传入名字
+		return Battle(map, p, GreenSlime, name, r1, c1, r, c, hp, direction_picture_number);
 	}
+
+	//红色史莱姆酱 9
+	if (map[r][c] == 9)
+	{
+		musicBattle();
+		char name[] = "Red Slime";//传入名字
+		return Battle(map, p, RedSlime, name, r1, c1, r, c, hp, direction_picture_number);
+	}
+
 	//蝙蝠   30 bat B   
 	if (map[r][c] == 30)
 	{
+		musicBattle();
 		char bt[] = "Bat";//传入名字
 		return Battle(map, p, Bat, bt, r1, c1, r, c, hp, direction_picture_number);
 	}
 	//骷髅  31 骷髅 S 
 	if (map[r][c] == 31)
 	{
-		char sk[] = "Skeleton";//传入名字
-		return Battle(map, p, Skeleton, sk, r1, c1, r, c, hp, direction_picture_number);
+		musicBattle();
+		char name[] = "Skeleton";//传入名字
+		return Battle(map, p, Skeleton, name, r1, c1, r, c, hp, direction_picture_number);
 	}
-
-
+	//骷髅士兵  32  
+	if (map[r][c] == 32)
+	{
+		musicBattle();
+		char name[] = "Skeleton Soldier";//传入名字
+		return Battle(map, p, SkeletonSoldier, name, r1, c1, r, c, hp, direction_picture_number);
+	}
+	//巫师  33  
+	if (map[r][c] == 33)
+	{
+		musicBattle();
+		char name[] = "Wizard";//传入名字
+		return Battle(map, p, Wizard, name, r1, c1, r, c, hp, direction_picture_number);
+	}
+	//魔王  38  
+	if (map[r][c] == 38)
+	{
+		musicBattle();
+		char name[] = "Demon King";//传入名字
+		return Battle(map, p, DemonKing, name, r1, c1, r, c, hp, direction_picture_number);
+	}
+	
 	// 药水   2 - minor_healing_potion h  3 - moderate_healing_potion H
 		//minor
 	if (map[r][c] == 2)
 	{
+		musicPickup();
 		map[r1][c1] = 7;
 		map[r][c] = direction_picture_number;
-		p.hp += 20;
-		//display_map(Map[p.position[0]]);
+		if (p.hp + 20 > p.hp_limit)
+		{
+			p.hp = p.hp_limit;
+		}
+		else
+		{
+			p.hp += 20;
+		}
 		PrintMap(Map[p.position[0]], p);
-		//printf("You find a minor healing potion and get 20 hp");
 		char name[] = "Minor Healing Potion";
-		PrintInfor(name, 20);
+		PrintInfor(name, p.hp - hp);
 		_kbhit();
 		return 0;
 	}
 	//moderate
 	if (map[r][c] == 3)
 	{
+		musicPickup();
 		map[r1][c1] = 7;
 		map[r][c] = direction_picture_number;
-		p.hp += 50;
-		//display_map(Map[p.position[0]]);
+		if (p.hp + 50 > p.hp_limit)
+		{
+			p.hp = p.hp_limit;
+		}
+		else
+		{
+			p.hp += 50;
+		}
 		PrintMap(Map[p.position[0]], p);
-		//printf("You find a moderate healing potion and get 50 hp");
 		char name[] = "Moderate Healing Potion";
-		PrintInfor(name, 50);
-		_kbhit();
+		PrintInfor(name, p.hp - hp);
 		return 0;
 	}
 
+	if (map[r][c] == 22)//盾
+	{
+		map[r1][c1] = 7;
+		map[r][c] = direction_picture_number;
+		p.def += 10;
+		musicPickup();
+		PrintMap(Map[p.position[0]], p);
+		char name[] = "Boko Shield";
+		PrintShield(name,10); //防御加10
+		return 0;
+	}
+
+	if (map[r][c] == 21)//剑
+	{
+		map[r1][c1] = 7;
+		map[r][c] = direction_picture_number;
+		p.atk += 10;
+		musicPickup();
+		PrintMap(Map[p.position[0]], p);
+		char name[] = "Boko Sword";
+		PrintSword(name, 10); //防御加10
+		return 0;
+	}
+
+	if (map[r][c] == 20)//防御宝石
+	{
+		int defence = 2;
+
+		map[r1][c1] = 7;
+		map[r][c] = direction_picture_number;
+		p.def += defence;
+		musicPickup();
+		PrintMap(Map[p.position[0]], p);
+		PrintLifeGem(defence);
+		return 0;
+	}
+
+	if (map[r][c] == 19)//攻击宝石
+	{
+		int attack = 2;
+
+		map[r1][c1] = 7;
+		map[r][c] = direction_picture_number;
+		p.atk += attack;
+		musicPickup();
+		PrintMap(Map[p.position[0]], p);
+		PrintAttackGem(attack);
+		return 0;
+	}
 	//上楼或下楼  11 upstairs +   12 downstairs -
 	  //上
 	if (map[r][c] == 11)
 	{
 		map[r1][c1] = 7;
 		p.position[0] += 1; //加一层
-		return 1;
+		return direction;
 	}
 	//下
 	if (map[r][c] == 12)
 	{
 		map[r1][c1] = 7;
 		p.position[0] -= 1; //加一层
-		return -1;
+		return direction;
 	}
-	// 水晶
+	
 	// 特殊物品？
 	return 0;
 }
 
-int afterPress(int map[][COL], Player& p,int r,int c,int r1,int c1,int direction_picture_number)
+int afterPress(int map[][COL], Player& p,int r,int c,int r1,int c1,\
+	int direction_picture_number,int direction)//4 5 6 7分别表示上下左右
 {
 	if (judge_hit(map[r][c]))//没撞墙则执行
 	{
 		set_new_position(p.position, r, c);
-		return ValidMove(map, p, r, c, r1, c1, direction_picture_number);
+		return ValidMove(map, p, r, c, r1, c1, direction_picture_number,direction);
 	}
 	//重置
 	r = r1;c = c1;
 	return 19;//表示无效输入
 }
 
-int move(int map[][COL],Player &p)    //玩家移动
+int play(int map[][COL],Player &p)    //玩家移动
 {
 	int r = p.position[1];
 	int c = p.position[2];
+	//direction 
+	int up = 4;int down = 5;int left = 6;int right = 7;
 	//备份
 	int r1 = r; 
 	int c1 = c;
@@ -214,35 +379,114 @@ int move(int map[][COL],Player &p)    //玩家移动
 	//用另一种方式，问题，按一个键走好几步——通过sleep解决
 	while (true)
 	{
-		Sleep(80);
+		Sleep(70);
 		if ((GetAsyncKeyState(VK_LEFT) & 0x8000)|| (GetAsyncKeyState('a') & 0x8000)|| (GetAsyncKeyState('A') & 0x8000))
 		{ // 检测左键
-			ret=afterPress(map, p, r, c - 1, r1, c1,35);//35是向左的素材的编号
+			while ((GetAsyncKeyState(VK_LEFT) & 0x8000) || (GetAsyncKeyState('a') & 0x8000) || (GetAsyncKeyState('A') & 0x8000))
+			{
+				Sleep(30);
+			}//实现一键一动，松开时才移动
+			ret=afterPress(map, p, r, c - 1, r1, c1,35,left);//35是向左的素材的编号
 			if (ret != 19)
 				return ret;
 		}
 		else if ((GetAsyncKeyState(VK_RIGHT) & 0x8000) || (GetAsyncKeyState('d') & 0x8000) || (GetAsyncKeyState('D') & 0x8000))
 		{ // 检测右键
-			ret = afterPress(map, p, r, c + 1, r1, c1,36);//向右
+			while ((GetAsyncKeyState(VK_RIGHT) & 0x8000) || (GetAsyncKeyState('d') & 0x8000) || (GetAsyncKeyState('D') & 0x8000))
+			{
+				Sleep(30);
+			}
+			ret = afterPress(map, p, r, c + 1, r1, c1,36,right);//向右
 			if (ret != 19)
 				return ret;
 		}
 		else if ((GetAsyncKeyState(VK_UP) & 0x8000) || (GetAsyncKeyState('w') & 0x8000) || (GetAsyncKeyState('W') & 0x8000))
 		{ // 检测上键
-			ret = afterPress(map, p, r-1, c , r1, c1,37);
+			while ((GetAsyncKeyState(VK_UP) & 0x8000) || (GetAsyncKeyState('w') & 0x8000) || (GetAsyncKeyState('W') & 0x8000))
+			{
+				Sleep(30);
+			}
+			ret = afterPress(map, p, r-1, c , r1, c1,37,up);
 			if (ret != 19)
 				return ret;
 		}
 		else if ((GetAsyncKeyState(VK_DOWN) & 0x8000) || (GetAsyncKeyState('s') & 0x8000) || (GetAsyncKeyState('S') & 0x8000))
 		{ // 检测下键
-			ret = afterPress(map, p, r + 1, c, r1, c1,8);
+			while ((GetAsyncKeyState(VK_DOWN) & 0x8000) || (GetAsyncKeyState('s') & 0x8000) || (GetAsyncKeyState('S') & 0x8000))
+			{
+				Sleep(30);
+			}
+			ret = afterPress(map, p, r + 1, c, r1, c1,8,down);
 			if (ret != 19)
 				return ret;
+		}
+		//图鉴 e
+		else if ((GetAsyncKeyState('e') & 0x8000) || (GetAsyncKeyState('E') & 0x8000))
+		{ // 检测下键
+			while ((GetAsyncKeyState('e') & 0x8000) || (GetAsyncKeyState('E') & 0x8000))
+			{
+				Sleep(30);
+			}
+			musicEncyclopedia();
+			MonsterEncyclopedia(p);
+			return 0;
+		}
+		else if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)//退出！
+		{
+			return -12;
 		}
 	}
 }
 
-//上述代码的控制台版本的核心实现部分
+ //此处传进来的map是所有楼层的！
+void ChangeFloor(int Map[FLOOR][ROW][COL],Player& P,int ret)
+{
+	musicEnter();
+	if (ret == 4 && Map[P.position[0]][P.position[1] - 1][P.position[2]] == 7)//向上并且楼梯上一格是空
+	{
+		P.position[1] -= 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+	else if (ret == 5 && Map[P.position[0]][P.position[1] + 1][P.position[2]] == 7)
+	{
+		P.position[1] += 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+	else if (ret == 6 && Map[P.position[0]][P.position[1]][P.position[2] - 1] == 7)
+	{
+		P.position[2] -= 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+	else if (ret == 7 && Map[P.position[0]][P.position[1]][P.position[2] + 1] == 7)
+	{
+		P.position[2] += 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+
+	//默认位置:门上一格是空，门上，否则去其他的空地
+	else if (Map[P.position[0]][P.position[1] - 1][P.position[2]] == 7)
+	{
+		P.position[1] -= 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+	else if (Map[P.position[0]][P.position[1] + 1][P.position[2]] == 7)
+	{
+		P.position[1] += 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+	else if (Map[P.position[0]][P.position[1]][P.position[2] + 1] == 7)
+	{
+		P.position[2] += 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+	else
+	{
+		P.position[2] -= 1;
+		Map[P.position[0]][P.position[1]][P.position[2]] = 8;
+	}
+}
+
+//下面代码的控制台版本的核心实现部分
 
 		// 控制台版本——要把下面这段放到循环里面！
 		////bug 可以走到墙里面！原因，没有重置r、c

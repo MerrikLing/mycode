@@ -1,25 +1,71 @@
 #include"head.hpp"
 IMAGE images[50];
-void LoadImagesHelper(int n)
+
+void LoadImagesHelper(int n,int Width,int Height)
 {
 	//std::string location = "D:\\Merrik\\code\\小游戏\\Tower of the Sorcerer\\materials\\" + std::to_string(n) + ".png";
 	std::string location = std::to_string(n) + ".png";
 
-	loadimage(&images[n], location.c_str(), 50, 50);  //最后两个数字表示缩放后的大小
+	loadimage(&images[n], location.c_str(), Width, Height);  //最后两个数字表示缩放后的大小
 }
+
 void LoadImages()       // 加载图片素材
 {
-	for (int i = 0;i <= 37;i++)
-		LoadImagesHelper(i);
-	//人物大图标，用于显示
+	for (int i = 0;i <= 40;i++)
+		LoadImagesHelper(i,50,50);
+	//大图标，用于显示
 	//loadimage(&images[49],  "D:\\Merrik\\code\\小游戏\\Tower of the Sorcerer\\materials\\8.png", 100, 100);
-	loadimage(&images[49], "49.png", 100, 100);
+	for (int i = 41;i <= 48;i++)
+		LoadImagesHelper(i, 100, 100);
 
+	//开始界面
+	loadimage(&images[49], "49.jpg", 850, 650);
+
+
+
+}
+
+RECT R = { 0, 00, 850, 650 };//矩形指针，用于打印游戏开始画面
+void StartImage()
+{
+	BeginBatchDraw();
+	//setbkcolor(BLACK);
+	setfillcolor(BLACK);
+	setbkmode(TRANSPARENT);
+	//solidrectangle(0, 00, 850, 650); // 填充矩形
+
+	putimage(0, 0, &images[49]);//
+
+	settextstyle(70, 0, "Consolas");
+	drawtext("\nTower of Sorcerer", &R, DT_CENTER);
+
+	EndBatchDraw();
+	BeginBatchDraw();
+	while (1)
+	{
+		Sleep(70);
+		if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+			break;
+	}
+
+	settextstyle(30, 0, "Consolas");
+	drawtext(\
+		"\n\n\n\n\n\n\n\n\n\n\n\n\n\nBrave warrior, Welcome!\nPlease use your wisdom and courage\n to defeat the demon king and rescue the imprisoned princess!"\
+		, &R, DT_CENTER);                                                                                              //删除了\n\n(Press space key to continue)                                         
+	EndBatchDraw();
+	Sleep(500);
+	while (1)
+	{
+		Sleep(70);
+		if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+			break;
+	}
 }
 
 void InitImage()
 {
 	BeginBatchDraw();
+	cleardevice();
 	//边框上的图片
 	for (int i = 0; i < ROW + 4; ++i)  //上边框
 		putimage(i * 50, 0, &images[0]);
@@ -31,15 +77,16 @@ void InitImage()
 		putimage(800, i * 50, &images[0]);
 	//for (int i = 1; i <= COL - 1; ++i)  //地图左框
 	//	putimage(200, i * 50, &images[0]);
-	putimage(50, 50, &images[49]); //人
+	putimage(50, 50, &images[48]); //人
 	putimage(50, 150, &images[14]); //hp
-	putimage(50, 200, &images[13]); //atk
-	putimage(50, 250, &images[15]); //def
-	putimage(50, 300, &images[16]); //money
-	putimage(50, 350, &images[4]); // yellow key
-	putimage(50, 400, &images[17]);//blue key
-	putimage(50, 450, &images[25]);// red key
-	putimage(50, 500, &images[24]); //镐子
+	putimage(50, 200, &images[40]); //hp_limit
+	putimage(50, 250, &images[13]); //atk
+	putimage(50, 300, &images[15]); //def
+	putimage(50, 350, &images[16]); //money
+	putimage(50, 400, &images[4]); // yellow key
+	putimage(50, 450, &images[17]);//blue key
+	putimage(50, 500, &images[25]);// red key
+	putimage(50, 550, &images[24]); //镐子
 	EndBatchDraw();
 }
 //辅助函数，用于右对齐
@@ -71,20 +118,23 @@ void PrintMap(int map[][COL], Player& p)
 	outtextxy(155, 50,  "Lv");
 	settextstyle(30, 0,  "Consolas");
 	setfillcolor(getbkcolor());
-	solidrectangle(100, 150, 165, 550); //先清空之前打印的数据
+	solidrectangle(150, 100, 200, 150);
+	solidrectangle(100, 150, 165, 580); //先清空之前打印的数据
 	outtextxy(190 - 15 * countDigits(p.Lv), 100, std::to_string(p.Lv).c_str());	//把数字转化成字符串
 	outtextxy(165 - 15 * countDigits(p.hp), 160, std::to_string(p.hp).c_str());
-	outtextxy(165 - 15 * countDigits(p.atk), 210, std::to_string(p.atk).c_str());
-	outtextxy(165 - 15 * countDigits(p.def), 260, std::to_string(p.def).c_str());
-	outtextxy(165 - 15 * countDigits(p.money), 310, std::to_string(p.money).c_str());
-	outtextxy(165 - 15 * countDigits(p.yellow_key), 360, std::to_string(p.yellow_key).c_str());
-	outtextxy(165 - 15 * countDigits(p.blue_key), 410, std::to_string(p.blue_key).c_str());
-	outtextxy(165 - 15 * countDigits(p.red_key), 460, std::to_string(p.red_key).c_str());
-	outtextxy(165 - 15 * countDigits(p.pickaxe), 510, std::to_string(p.pickaxe).c_str());
+
+	outtextxy(165 - 15 * countDigits(p.hp_limit), 210, std::to_string(p.hp_limit).c_str());
+	outtextxy(165 - 15 * countDigits(p.atk), 260, std::to_string(p.atk).c_str());
+	outtextxy(165 - 15 * countDigits(p.def), 310, std::to_string(p.def).c_str());
+	outtextxy(165 - 15 * countDigits(p.money), 360, std::to_string(p.money).c_str());
+	outtextxy(165 - 15 * countDigits(p.yellow_key), 410, std::to_string(p.yellow_key).c_str());
+	outtextxy(165 - 15 * countDigits(p.blue_key), 460, std::to_string(p.blue_key).c_str());
+	outtextxy(165 - 15 * countDigits(p.red_key), 510, std::to_string(p.red_key).c_str());
+	outtextxy(165 - 15 * countDigits(p.pickaxe), 560, std::to_string(p.pickaxe).c_str());
 	EndBatchDraw();
 }
 
-RECT R1 = { 240,230,700, 450 };//矩形指针R1，用于打印游戏进程中信息
+RECT R1 = { 220,230,720, 450 };//矩形指针R1，用于打印游戏进程中信息
 void PrintMessage(const char* message)
 {
 	setbkmode(TRANSPARENT);				//设置字体为透明
@@ -94,7 +144,7 @@ void PrintMessage(const char* message)
 		BeginBatchDraw();               //与下面的EndBatchDraw();必须成对出现
 		settextstyle(30, 0, "Consolas");
 		setfillcolor(RGB(i, 0, 0));//第一个数字表示红色
-		solidrectangle(240, 230, 700, 450); // 填充矩形
+		solidrectangle(220, 230, 720, 450); // 填充矩形
 		drawtext(message, &R1, DT_CENTER);
 		//在矩形区域R1内输入文字，水平居中，垂直居中
 		Sleep(30);
@@ -127,6 +177,137 @@ void PrintNoKey()//no enough key
 
 void PrintLvUp()
 {
-	std::string message = "\nLv up! \n\nYou get 100 HP  5 Atk  5 Def!";
+	setbkmode(TRANSPARENT);				//设置字体为透明
+	settextcolor(RED);
+	for (int i = 256;i > 64;i -= 5)
+	{                                   //双缓冲技术来避免绘制时图像闪烁，效果显著
+		BeginBatchDraw();               //与下面的EndBatchDraw();必须成对出现
+		setfillcolor(RGB(i, i, 0));
+		solidrectangle(220, 230, 720, 450); // 填充矩形
+		settextstyle(50, 0, "Consolas");
+		drawtext("\nLv up!", &R1, DT_CENTER);
+
+		settextstyle(30, 0, "Consolas");
+		drawtext("\n\n\n\nYou get 2 Atk  2 Def!\nMax HP limit increased by 100", &R1, DT_CENTER);
+		Sleep(30);
+		EndBatchDraw();
+	}
+}
+
+void PrintLifeGem(int defence)
+{
+	std::string message = "\n\nYou get a Life Gem \n\nand get " + std::to_string(defence)+" Def";
 	PrintMessage(message.c_str());
+}
+
+void PrintAttackGem(int attack)
+{
+	std::string message = "\n\nYou get an Attack Gem \n\nand get "+ std::to_string(attack) + " Atk";
+	PrintMessage(message.c_str());
+}
+
+void  PrintSpecialInfor(const char* name)
+{
+	BeginBatchDraw();
+	setbkmode(TRANSPARENT);
+	settextcolor(BLACK);
+
+	setfillcolor(RGB(255, 255, 0));
+	solidrectangle(220, 230, 720, 450); // 填充矩形
+	settextstyle(30, 0, "Consolas");
+	drawtext(name, &R1, DT_CENTER);
+	EndBatchDraw();
+	Sleep(500);
+	while (1)
+	{
+		Sleep(70);
+		if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+			break;
+	}
+}
+
+void PrintWin()
+{
+	char message[] = "\nCongratulations!\n\n With your great effort\n you've managed save the princess!\n";
+	PrintSpecialInfor(message);
+}
+
+void PrintLose()
+{
+	char message[] = "\n\nIt's a reget that\n\n you have lost your life.";
+	PrintSpecialInfor(message);
+}
+
+void PrintShield(char* name, int defence)
+{
+	std::string n = name;
+	std::string message = "\n\nYou get a " + n + "\n\nand get " + std::to_string(defence) + " Def";
+	PrintSpecialInfor(message.c_str());
+}
+
+void PrintSword(char* name, int attack)
+{
+	std::string n = name;
+	std::string message = "\n\nYou get a " + n + "\n\nand get " + std::to_string(attack) + " Atk";
+	PrintSpecialInfor(message.c_str());
+}
+
+//图鉴
+RECT R2 = { 300, 100, 750, 550 };
+void MonsterEncyclopedia(Player& p)
+{
+	BeginBatchDraw();
+	setbkmode(TRANSPARENT);
+	settextcolor(BLACK);
+
+	setfillcolor(RGB(255, 255, 0));
+	solidrectangle(300, 80, 750, 580); // 填充矩形
+	settextstyle(35, 0, "Consolas");
+
+	drawtext("Monster Encyclopedia", &R2, DT_CENTER);
+
+	putimage(320, 150, &images[41]); //绿色史莱姆
+	putimage(320, 250, &images[42]); //红色史莱姆
+	putimage(320, 350, &images[43]); //蝙蝠
+	putimage(320, 450, &images[47]); //骷髅
+	putimage(540, 150, &images[46]); //巫师
+	putimage(540, 250, &images[44]); //骷髅士兵
+	putimage(540, 350, &images[45]); //魔王
+
+	settextstyle(30, 0, "Consolas");
+	for(int i=0;i<4;i++)
+		outtextxy(430, 160+100*i, "Damage");
+	for (int i = 0;i < 3;i++)
+		outtextxy(650, 160 + 100 * i, "Damage");
+	
+	int d = Damage(p, GreenSlime);    //打印数值
+	outtextxy(500 - 15 * countDigits(d), 210, std::to_string(d).c_str());
+	d = Damage(p, RedSlime);
+	outtextxy(500 - 15 * countDigits(d), 310, std::to_string(d).c_str());
+	d = Damage(p, Bat);
+	outtextxy(500 - 15 * countDigits(d), 410, std::to_string(d).c_str());
+	d = Damage(p, Skeleton);
+	outtextxy(500 - 15 * countDigits(d), 510, std::to_string(d).c_str());
+	d = Damage(p, Wizard);
+	outtextxy(720 - 15 * countDigits(d), 210, std::to_string(d).c_str());
+	d = Damage(p, SkeletonSoldier);
+	outtextxy(720 - 15 * countDigits(d), 310, std::to_string(d).c_str());
+	//d = Damage(p, DemonKing);
+	outtextxy(720 - 45, 410,"???");
+
+	EndBatchDraw();
+	while (1)
+	{
+		Sleep(70);
+		if ((GetAsyncKeyState(VK_SPACE) & 0x8000)|| (GetAsyncKeyState('e') & 0x8000)\
+			|| (GetAsyncKeyState('E') & 0x8000)) 
+		{
+			while ((GetAsyncKeyState(VK_SPACE) & 0x8000) || (GetAsyncKeyState('e') & 0x8000)\
+				|| (GetAsyncKeyState('E') & 0x8000))
+			{
+				Sleep(30);
+			}
+			break;
+		}
+	}
 }

@@ -6,13 +6,12 @@
 #define ROW 13
 #define COL 13
 #define FLOOR 3
-//#define ATTACK 10
-//#define LIFE 10
-//#define DEFENSE 10
 #include<cstdio>
 #include<cstdlib>
 #include<graphics.h>
-#include<windows.h>
+#include <Windows.h>
+#include<Mmsystem.h>
+#pragma comment(lib,"winmm.lib")
 #include<conio.h>
 #include<easyx.h>
 #include <string>
@@ -23,6 +22,7 @@ public:
     Player();
     int position[3]; // 位置数组
     int hp;         // 生命值
+    int hp_limit;   // 生命值上限
     int atk;        // 攻击力
     int def;        // 防御力
     int money;      // 金钱
@@ -46,21 +46,42 @@ public:
     //const char* name;
 };
 //对象
-extern Monster GreenSlime;
-extern Monster Skeleton;
+extern Monster GreenSlime; extern Monster RedSlime;
+extern Monster Skeleton;  extern Monster SkeletonSoldier;
 extern Monster Bat;
+extern Monster Wizard;
+extern Monster DemonKing;
 
 //函数
 //void display_map(int map[][COL]);   //控制台版本
-int move(int map[][COL], Player &p);
+int play(int map[][COL], Player &p);
+void ChangeFloor(int Map[FLOOR][ROW][COL], Player& P, int ret);
+int Damage(Player& p, const Monster& m);
+
 void LoadImages();
+void StartImage();
 void InitImage();
+void MonsterEncyclopedia(Player& p);
 void PrintMap(int map[][COL], Player& p);    //图形化
 void PrintInfor(char* name, int d_hp, int money, int exp);
 void PrintInfor(char* name, int addHP);
 void PrintNoKey();
 void PrintLvUp();
+void PrintShield(char* name, int defence);
+void PrintSword(char* name, int attack);
+void PrintLifeGem(int defence);
+void PrintAttackGem(int attack);
+void PrintWin();
+void PrintLose();
 //map
 extern int Map[FLOOR][ROW][COL];
 
-
+//audio
+void musicPickup();
+void musicBattle();
+void musicEnter();
+void musicLvUp();
+void closeMusic();
+void musicDie();
+void musicWin();
+void musicEncyclopedia();
