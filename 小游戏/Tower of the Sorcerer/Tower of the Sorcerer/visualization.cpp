@@ -1,5 +1,5 @@
 #include"head.hpp"
-IMAGE images[50];
+IMAGE images[51];
 
 void LoadImagesHelper(int n,int Width,int Height)
 {
@@ -18,6 +18,7 @@ void LoadImages()       // 加载图片素材
 	for (int i = 41;i <= 48;i++)
 		LoadImagesHelper(i, 100, 100);
 
+	LoadImagesHelper(50, 50, 50);
 	//开始界面
 	loadimage(&images[49], "49.jpg", 850, 650);
 
@@ -217,6 +218,9 @@ void  PrintSpecialInfor(const char* name)
 	settextstyle(30, 0, "Consolas");
 	drawtext(name, &R1, DT_CENTER);
 	EndBatchDraw();
+}
+void exit()
+{
 	Sleep(500);
 	while (1)
 	{
@@ -228,14 +232,20 @@ void  PrintSpecialInfor(const char* name)
 
 void PrintWin()
 {
-	char message[] = "\nCongratulations!\n\n With your great effort\n you've managed save the princess!\n";
+	char message[] = "\nCongratulations!\n\n With your great effort\n you've reached the terminal";
 	PrintSpecialInfor(message);
+	char message2[] = "\n\n\nbut...";
+	PrintSpecialInfor(message2);
+	char message3[] = "\n\nThe princess is fake.\n\n The true one is hided elsewhere!";
+	PrintSpecialInfor(message3);
+	exit();
 }
 
 void PrintLose()
 {
 	char message[] = "\n\nIt's a reget that\n\n you have lost your life.";
 	PrintSpecialInfor(message);
+	exit();
 }
 
 void PrintShield(char* name, int defence)
@@ -243,6 +253,7 @@ void PrintShield(char* name, int defence)
 	std::string n = name;
 	std::string message = "\n\nYou get a " + n + "\n\nand get " + std::to_string(defence) + " Def";
 	PrintSpecialInfor(message.c_str());
+	exit();
 }
 
 void PrintSword(char* name, int attack)
@@ -250,6 +261,7 @@ void PrintSword(char* name, int attack)
 	std::string n = name;
 	std::string message = "\n\nYou get a " + n + "\n\nand get " + std::to_string(attack) + " Atk";
 	PrintSpecialInfor(message.c_str());
+	exit();
 }
 
 //图鉴

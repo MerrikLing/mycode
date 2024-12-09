@@ -21,30 +21,6 @@ void set_new_position(int position[], int r, int c)
 //对战
 void PK(Player& p, const Monster& m)
 {
-	//int l = m.hp;
-	//if (p.atk - m.def >= l)  //一击毙命
-	//	return;
-	//while (p.hp > 0 && l > 0)
-	//{
-	//	if (p.def < m.atk)
-	//		p.hp -= m.atk - p.def;
-	//	if (m.def < p.atk)
-	//		l -= p.atk - m.def;
-	//}
-	//if (p.hp < 0)
-	//	p.hp = 0;
-
-	//int damage = Damage(p, m);
-	//switch (damage)
-	//{
-	//case -1:
-	//{
-	//	p.hp = 0;
-	//	break;
-	//}
-	//default:
-	//	p.hp -= damage;
-	//}
 	p.hp -= Damage(p, m);
 }
 
@@ -114,7 +90,64 @@ int Battle(int map[][COL], Player& p, Monster& m, char* name, \
 
 }
 
-
+int times = 0;//供奉给女神像的次数
+void MeetGodness(Player& p, int map[][COL], int r1,int c1,int r,int c)   //遇见后要消失！
+{
+	musicGodness();
+	int cost = 50* (times + 1);
+	std::string message = "\n\nWould you like to offer \n" + std::to_string(cost) + " gold coins to the goddess?\n\nYes: 1  NO: 2";
+	PrintSpecialInfor(message.c_str());
+	while (1)
+	{
+		Sleep(70);
+		if (GetAsyncKeyState(VK_NUMPAD1) & 0x8000) //同意
+		{
+			while (GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
+				Sleep(30);
+			if (p.money >=  cost)
+			{
+				p.money -=  cost;
+				times += 1;
+				if(times%2==1)
+				{
+					map[r][c] = 7;   //女神像消失
+					//玩家坐标重置回来
+					set_new_position(p.position, r1, c1);
+					PrintSpecialInfor("\n\n\nYou get nothing!");
+					Sleep(600);
+					return;
+				}//啥都没有，哈哈哈
+				else //得一个生命宝石
+				{
+					musicLvUp();
+					int defence = 2;
+					p.def += defence;
+					PrintLifeGem(defence);
+					map[r][c] = 7;   //女神像消失
+					//玩家坐标重置回来
+					set_new_position(p.position, r1, c1);
+					return;
+				}
+			}
+			else
+			{
+				//玩家坐标重置回来
+				set_new_position(p.position, r1, c1);
+				PrintSpecialInfor("\n\n\nYour money is not enough!");
+				Sleep(600);
+				return;
+			}
+		}
+		if (GetAsyncKeyState(VK_NUMPAD2) & 0x8000) //不同意
+		{
+			while (GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+				Sleep(30);
+			//玩家坐标重置回来
+			set_new_position(p.position, r1, c1);
+			return;
+		}
+	}
+}
 
 int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 	int direction_picture_number,int direction) //direction 4 5 6 7分别表示上下左右
@@ -331,6 +364,12 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 		PrintAttackGem(attack);
 		return 0;
 	}
+	
+	if (map[r][c] == 50) //女神像
+	{
+		MeetGodness(p,map,r1,c1,r,c);
+		return 0;
+	}
 	//上楼或下楼  11 upstairs +   12 downstairs -
 	  //上
 	if (map[r][c] == 11)
@@ -347,7 +386,6 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 		return direction;
 	}
 	
-	// 特殊物品？
 	return 0;
 }
 

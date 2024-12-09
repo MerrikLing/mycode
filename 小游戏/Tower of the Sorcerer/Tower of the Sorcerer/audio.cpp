@@ -48,6 +48,13 @@ void musicEncyclopedia()
 	mciSendString("play Encyclopedia", NULL, 0, NULL);
 }
 
+void musicGodness()
+{
+	mciSendString("close Godness", NULL, 0, NULL);
+	mciSendString("open Godness.mp3 alias Godness", NULL, 0, NULL);
+	mciSendString("play Godness", NULL, 0, NULL);
+}
+
 void closeMusic()
 {
 	mciSendString("close pickup", NULL, 0, NULL);
@@ -57,6 +64,7 @@ void closeMusic()
 	mciSendString("close die", NULL, 0, NULL);
 	mciSendString("close win", NULL, 0, NULL);
 	mciSendString("close Encyclopedia", NULL, 0, NULL);
+	mciSendString("close Godness", NULL, 0, NULL);
 
 	mciSendString("close background", NULL, 0, NULL);
 }

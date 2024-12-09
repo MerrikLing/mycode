@@ -71,8 +71,10 @@ void PrintShield(char* name, int defence);
 void PrintSword(char* name, int attack);
 void PrintLifeGem(int defence);
 void PrintAttackGem(int attack);
+void  PrintSpecialInfor(const char* name);
 void PrintWin();
 void PrintLose();
+void exit();
 //map
 extern int Map[FLOOR][ROW][COL];
 
@@ -81,6 +83,7 @@ void musicPickup();
 void musicBattle();
 void musicEnter();
 void musicLvUp();
+void musicGodness();
 void closeMusic();
 void musicDie();
 void musicWin();
