@@ -93,7 +93,7 @@ int Battle(int map[][COL], Player& p, Monster& m, char* name, \
 int times = 0;//¹©·î¸øÅ®ÉñÏñµÄ´ÎÊý
 void MeetGodness(Player& p, int map[][COL], int r1,int c1,int r,int c)   //Óö¼ûºóÒªÏûÊ§£¡
 {
-	musicGodness();
+	musicMeet();
 	int cost = 50* (times + 1);
 	std::string message = "\n\nWould you like to offer \n" + std::to_string(cost) + " gold coins to the goddess?\n\nYes: 1  NO: 2";
 	PrintSpecialInfor(message.c_str());
@@ -149,6 +149,8 @@ void MeetGodness(Player& p, int map[][COL], int r1,int c1,int r,int c)   //Óö¼ûº
 	}
 }
 
+int meetSage = 0;
+int meetPrincess = 0;
 int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 	int direction_picture_number,int direction) //direction 4 5 6 7·Ö±ð±íÊ¾ÉÏÏÂ×óÓÒ
 {
@@ -156,6 +158,16 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 
 	if (map[r][c] == 39)  //ÕÒµ½¹«Ö÷¡ª¡ªÊ¤Àû
 	{
+		meetPrincess += 1;
+		set_new_position(p.position, r1, c1);//×ø±êÖØÖÃ»ØÀ´
+		if (meetPrincess == 1)
+		{
+			musicMeet();
+			PrintFalsePrincess();
+			map[r][c] = 7;//¼Ù¹«Ö÷ÏûÊ§
+			map[r+1][c+2] = 11;//³öÏÖÂ¥ÌÝ
+			return 0;
+		}
 		return 3;//Ê¤Àû
 	}
 
@@ -164,6 +176,55 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 	{
 		map[r1][c1] = 7;
 		map[r][c] = direction_picture_number;
+		return 0;
+	}
+
+	if (map[r][c] == 51) //ÏÍÕß
+	{
+		meetSage += 1;
+		set_new_position(p.position, r1, c1);//×ø±êÖØÖÃ»ØÀ´
+		musicMeet();
+		if(meetSage==1)
+		{
+			char message1[] = "\n\nThe tower seems a bit strange\n\nI'm not sure";
+			char message2[] = "\nBut I know\n\nthere might be something good\n\n on the third floor";
+			char message3[] = "\n\nRemember,solving a problem is  \n\nnever confined to a single way";
+			char message4[] = "\n\nHere are 10 gold coins.\n\nGood luck!";
+			PrintSpecialInfor(message1);
+			exit();
+			PrintSpecialInfor(message2);
+			exit();
+			PrintSpecialInfor(message3);
+			exit();
+			PrintSpecialInfor(message4);
+			exit();
+			p.money += 10;
+		}
+		else
+		{
+			char message1[] = "\n\nGood job!\n\nYou've made it to the second floor";
+			char message2[] = "\n\nTo some extent,\n\nDef is more important than Ack";
+			char message3[] = "\n\nHere is a Moderate Healing Potion.\n\nGood luck!";
+			PrintSpecialInfor(message1);
+			exit();
+			PrintSpecialInfor(message2);
+			exit();
+			PrintSpecialInfor(message3);
+			exit();
+			//»ñµÃÖÐµÈ»Ö¸´Ò©Ë®
+			musicPickup();
+			if (p.hp + 50 > p.hp_limit)
+			{
+				p.hp = p.hp_limit;
+			}
+			else
+			{
+				p.hp += 50;
+			}
+			char name[] = "Moderate Healing Potion";
+			PrintInfor(name, p.hp - hp);
+		}
+		map[r][c] = 7;//ÏÍÕßÏûÊ§
 		return 0;
 	}
 	//Ô¿³×
@@ -335,7 +396,20 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 		musicPickup();
 		PrintMap(Map[p.position[0]], p);
 		char name[] = "Boko Sword";
-		PrintSword(name, 10); //·ÀÓù¼Ó10
+		PrintSword(name, 10); //¹¥»÷¼Ó10
+		return 0;
+	}
+
+	if (map[r][c] == 24)//¸ä×Ó
+	{
+		map[r1][c1] = 7;
+		map[r][c] = direction_picture_number;
+		p.pickaxe += 1;
+		musicPickup();
+		PrintMap(Map[p.position[0]], p);
+		char message[] = "\n\n\nYou get a Pickaxe!";
+		PrintSpecialInfor(message);
+		exit();
 		return 0;
 	}
 
@@ -458,9 +532,94 @@ int play(int map[][COL],Player &p)    //Íæ¼ÒÒÆ¶¯
 			if (ret != 19)
 				return ret;
 		}
+
+		//¸ä×Ó p
+		else if ((GetAsyncKeyState('p') & 0x8000) || (GetAsyncKeyState('P') & 0x8000))
+		{ // ¼ì²âp¼ü
+			while ((GetAsyncKeyState('p') & 0x8000) || (GetAsyncKeyState('P') & 0x8000))
+			{
+				Sleep(30);
+			}
+			if (p.pickaxe <= 0)
+				continue;
+			char message[] = "\n\n\nYou have destroyed a wall!";
+			PrintUsePickaxe();
+			//Sleep(200);
+			while (true)
+			{
+				if ((GetAsyncKeyState('p') & 0x8000) || (GetAsyncKeyState('P') & 0x8000))
+				{//ÔÙ´Î°´ p È¡Ïû
+					while ((GetAsyncKeyState('p') & 0x8000) || (GetAsyncKeyState('P') & 0x8000))
+					{
+						Sleep(30);
+					}
+					return 0;
+				}
+				else if ((GetAsyncKeyState(VK_LEFT) & 0x8000) || (GetAsyncKeyState('a') & 0x8000) || (GetAsyncKeyState('A') & 0x8000))
+				{ // ¸ä×Ó ×ó¼ü
+					while ((GetAsyncKeyState(VK_LEFT) & 0x8000) || (GetAsyncKeyState('a') & 0x8000) || (GetAsyncKeyState('A') & 0x8000))
+					{
+						Sleep(30);
+					}
+					if (map[r][c - 1] == 1)
+					{
+						PrintMessage(message);
+						map[r][c - 1] = 7;
+						p.pickaxe -= 1;
+					}
+					return 0;
+				}
+
+				else if ((GetAsyncKeyState(VK_RIGHT) & 0x8000) || (GetAsyncKeyState('d') & 0x8000) || (GetAsyncKeyState('D') & 0x8000))
+				{ // ¸ä×Ó ÓÒ¼ü
+					while ((GetAsyncKeyState(VK_RIGHT) & 0x8000) || (GetAsyncKeyState('d') & 0x8000) || (GetAsyncKeyState('D') & 0x8000))
+					{
+						Sleep(30);
+					}
+					if (map[r][c + 1] == 1)
+					{
+						PrintMessage(message);
+						map[r][c + 1] = 7;
+						p.pickaxe -= 1;
+					}
+					return 0;
+				}
+
+				else if ((GetAsyncKeyState(VK_UP) & 0x8000) || (GetAsyncKeyState('w') & 0x8000) || (GetAsyncKeyState('W') & 0x8000))
+				{ // ¸ä×Ó ÉÏ¼ü
+					while ((GetAsyncKeyState(VK_UP) & 0x8000) || (GetAsyncKeyState('w') & 0x8000) || (GetAsyncKeyState('W') & 0x8000))
+					{
+						Sleep(30);
+					}
+					if (map[r - 1][c] == 1)
+					{
+						PrintMessage(message);
+						map[r - 1][c] = 7;
+						p.pickaxe -= 1;
+					}
+					return 0;
+				}
+
+				else if ((GetAsyncKeyState(VK_DOWN) & 0x8000) || (GetAsyncKeyState('s') & 0x8000) || (GetAsyncKeyState('S') & 0x8000))
+				{ // ¸ä×Ó ÏÂ¼ü
+					while ((GetAsyncKeyState(VK_DOWN) & 0x8000) || (GetAsyncKeyState('s') & 0x8000) || (GetAsyncKeyState('S') & 0x8000))
+					{
+						Sleep(30);
+					}
+					if (map[r + 1][c] == 1)
+					{
+						PrintMessage(message);
+						map[r + 1][c] = 7;
+						p.pickaxe -= 1;
+					}
+					return 0;
+				}
+			}
+		}
+
 		//Í¼¼ø e
 		else if ((GetAsyncKeyState('e') & 0x8000) || (GetAsyncKeyState('E') & 0x8000))
-		{ // ¼ì²âÏÂ¼ü
+		{ // ¼ì²âe¼ü
 			while ((GetAsyncKeyState('e') & 0x8000) || (GetAsyncKeyState('E') & 0x8000))
 			{
 				Sleep(30);
@@ -474,6 +633,7 @@ int play(int map[][COL],Player &p)    //Íæ¼ÒÒÆ¶¯
 			return -12;
 		}
 	}
+	return 0;
 }
 
  //´Ë´¦´«½øÀ´µÄmapÊÇËùÓÐÂ¥²ãµÄ£¡

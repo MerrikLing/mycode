@@ -1,4 +1,11 @@
 #include"head.hpp"
+void musicGameLoading()  //真奇怪了，为什么播放有卡顿？难道长一点的音频都不行吗.所以我暂时不用这个了
+{
+	mciSendString("open GameLoading.mp3 alias GameLoading", NULL, 0, NULL);
+	mciSendString("play GameLoading wait", NULL, 0, NULL);
+	mciSendString("close GameLoading ", NULL, 0, NULL);
+
+}
 void musicPickup()
 {
 	mciSendString("close pickup", NULL, 0, NULL);
@@ -48,7 +55,7 @@ void musicEncyclopedia()
 	mciSendString("play Encyclopedia", NULL, 0, NULL);
 }
 
-void musicGodness()
+void musicMeet()
 {
 	mciSendString("close Godness", NULL, 0, NULL);
 	mciSendString("open Godness.mp3 alias Godness", NULL, 0, NULL);
@@ -57,6 +64,7 @@ void musicGodness()
 
 void closeMusic()
 {
+	mciSendString("close GameLoading ", NULL, 0, NULL);
 	mciSendString("close pickup", NULL, 0, NULL);
 	mciSendString("close battle", NULL, 0, NULL);
 	mciSendString("close enter", NULL, 0, NULL);

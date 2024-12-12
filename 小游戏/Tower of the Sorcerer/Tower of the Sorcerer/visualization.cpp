@@ -1,5 +1,5 @@
 #include"head.hpp"
-IMAGE images[51];
+IMAGE images[54];
 
 void LoadImagesHelper(int n,int Width,int Height)
 {
@@ -18,12 +18,10 @@ void LoadImages()       // 加载图片素材
 	for (int i = 41;i <= 48;i++)
 		LoadImagesHelper(i, 100, 100);
 
-	LoadImagesHelper(50, 50, 50);
+	for (int i = 50;i <= 53;i++)
+		LoadImagesHelper(i, 50, 50);
 	//开始界面
 	loadimage(&images[49], "49.jpg", 850, 650);
-
-
-
 }
 
 RECT R = { 0, 00, 850, 650 };//矩形指针，用于打印游戏开始画面
@@ -61,6 +59,20 @@ void StartImage()
 		if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 			break;
 	}
+}
+
+void InventInfor()   //打印制作信息
+{
+	BeginBatchDraw();
+	cleardevice();
+	settextstyle(70, 0, "Consolas");
+	drawtext("\n\n Designed by Merrik.", &R, DT_CENTER);
+	settextstyle(40, 0, "Consolas");
+	drawtext("\n\n\n\n\n\n\n\n\n\nThis game would not have been possible\n without the support of my dear roomates\nor the advice of Leanne", &R, DT_CENTER);//
+	EndBatchDraw();
+	//musicGameLoading();
+	Sleep(5000);
+	//mciSendString("close GameLoading ", NULL, 0, NULL);
 }
 
 void InitImage()
@@ -120,7 +132,7 @@ void PrintMap(int map[][COL], Player& p)
 	settextstyle(30, 0,  "Consolas");
 	setfillcolor(getbkcolor());
 	solidrectangle(150, 100, 200, 150);
-	solidrectangle(100, 150, 165, 580); //先清空之前打印的数据
+	solidrectangle(100, 150, 165, 600); //先清空之前打印的数据
 	outtextxy(190 - 15 * countDigits(p.Lv), 100, std::to_string(p.Lv).c_str());	//把数字转化成字符串
 	outtextxy(165 - 15 * countDigits(p.hp), 160, std::to_string(p.hp).c_str());
 
@@ -230,12 +242,14 @@ void exit()
 	}
 }
 
-void PrintWin()
+void PrintFalsePrincess()
 {
 	char message[] = "\nCongratulations!\n\n With your great effort\n you've reached the terminal";
 	PrintSpecialInfor(message);
+	exit();
 	char message2[] = "\n\n\nbut...";
 	PrintSpecialInfor(message2);
+	exit();
 	char message3[] = "\n\nThe princess is fake.\n\n The true one is hided elsewhere!";
 	PrintSpecialInfor(message3);
 	exit();
@@ -244,6 +258,13 @@ void PrintWin()
 void PrintLose()
 {
 	char message[] = "\n\nIt's a reget that\n\n you have lost your life.";
+	PrintSpecialInfor(message);
+	exit();
+}
+
+void PrintWin()
+{
+	char message[] = "\nCongratulations!\n\n With your great effort\n you've saved the true princess!";
 	PrintSpecialInfor(message);
 	exit();
 }
@@ -264,6 +285,13 @@ void PrintSword(char* name, int attack)
 	exit();
 }
 
+void PrintUsePickaxe()
+{
+	setbkmode(TRANSPARENT);
+	settextcolor(WHITE);
+	settextstyle(40, 0, "Consolas");
+	drawtext("\n\nUsing Pickaxe", &R1, DT_CENTER);
+}
 //图鉴
 RECT R2 = { 300, 100, 750, 550 };
 void MonsterEncyclopedia(Player& p)
@@ -323,3 +351,4 @@ void MonsterEncyclopedia(Player& p)
 		}
 	}
 }
+

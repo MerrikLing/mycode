@@ -9,13 +9,15 @@
 //职业 魔药 多门 隐藏地图 多地图
 
 //或许可以借鉴哈利波特
+// 借鉴  刀剑神域 ！
+// 传送水晶？ 剑技  
 //增加音效，背景音乐 可以考虑不同楼层不同的背景音乐
 //存在的问题：
 // 数值有问题！ 可以考虑每层怪物设计不同的数值
-//图鉴打开的声音
+//商人
 //如果双方都无法打穿对方的防御就会死循环
 
-//游戏说明：
+//游戏说明： ——寒假做成可视化
 //必须按ESC退出！！ 不要直接点关闭！！否则音频资源不会释放，音频可能损坏！！
 
 int main()
@@ -23,9 +25,10 @@ int main()
 		Player P;            //初始化
 		initgraph(850, 650); // 初始化一个窗口
 		LoadImages();        // 加载图片素材
-		//StartImage();        // 游戏开始画面
+		StartImage();        // 游戏开始画面
+		InventInfor();       //制作者信息
 		//背景音乐
-		//PlaySound(TEXT("ZeldaBackground.wav"), 0, SND_FILENAME | SND_ASYNC | SND_LOOP); //这个函数只适用于处理单个音频！
+		PlaySound(TEXT("ZeldaBackground.wav"), 0, SND_FILENAME | SND_ASYNC | SND_LOOP); //这个函数只适用于处理单个音频！
 		InitImage();         // 打印游戏过程中始终不变的图片
 		int ret;
 		int f = P.position[0];

@@ -5,7 +5,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define ROW 13
 #define COL 13
-#define FLOOR 3
+#define FLOOR 4
 #include<cstdio>
 #include<cstdlib>
 #include<graphics.h>
@@ -60,30 +60,35 @@ int Damage(Player& p, const Monster& m);
 
 void LoadImages();
 void StartImage();
+void InventInfor();
 void InitImage();
 void MonsterEncyclopedia(Player& p);
 void PrintMap(int map[][COL], Player& p);    //Í¼ÐÎ»¯
 void PrintInfor(char* name, int d_hp, int money, int exp);
 void PrintInfor(char* name, int addHP);
+void PrintMessage(const char* message);
 void PrintNoKey();
 void PrintLvUp();
 void PrintShield(char* name, int defence);
 void PrintSword(char* name, int attack);
 void PrintLifeGem(int defence);
 void PrintAttackGem(int attack);
-void  PrintSpecialInfor(const char* name);
-void PrintWin();
+void PrintSpecialInfor(const char* name);
+void PrintFalsePrincess();
 void PrintLose();
+void PrintWin();
 void exit();
+void PrintUsePickaxe();
 //map
 extern int Map[FLOOR][ROW][COL];
 
 //audio
+void musicGameLoading();
 void musicPickup();
 void musicBattle();
 void musicEnter();
 void musicLvUp();
-void musicGodness();
+void musicMeet();
 void closeMusic();
 void musicDie();
 void musicWin();
