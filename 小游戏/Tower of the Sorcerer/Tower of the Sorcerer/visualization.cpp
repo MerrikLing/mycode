@@ -1,5 +1,5 @@
 #include"head.hpp"
-IMAGE images[54];
+IMAGE images[60];
 
 void LoadImagesHelper(int n,int Width,int Height)
 {
@@ -18,7 +18,7 @@ void LoadImages()       // 加载图片素材
 	for (int i = 41;i <= 48;i++)
 		LoadImagesHelper(i, 100, 100);
 
-	for (int i = 50;i <= 53;i++)
+	for (int i = 50;i <= 54;i++)
 		LoadImagesHelper(i, 50, 50);
 	//开始界面
 	loadimage(&images[49], "49.jpg", 850, 650);
@@ -43,20 +43,20 @@ void StartImage()
 	while (1)
 	{
 		Sleep(70);
-		if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+		if ((GetAsyncKeyState(VK_SPACE) & 0x8000) || (GetAsyncKeyState(VK_RETURN) & 0x8000))
 			break;
 	}
 
 	settextstyle(30, 0, "Consolas");
 	drawtext(\
-		"\n\n\n\n\n\n\n\n\n\n\n\n\n\nBrave warrior, Welcome!\nPlease use your wisdom and courage\n to defeat the demon king and rescue the imprisoned princess!"\
-		, &R, DT_CENTER);                                                                                              //删除了\n\n(Press space key to continue)                                         
+		"\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe princess has been captured and imprisoned by the Demon.\nBut nobody knows where she is.\nYou've found clues leading to this tower\n so you come here ..."\
+		, &R, DT_CENTER);       //The princess has been captured by the devil You found clues about her that led to this tower ,       Please use your wisdom and courage                                //删除了\n\n(Press space key to continue)                                         
 	EndBatchDraw();
 	Sleep(500);
 	while (1)
 	{
 		Sleep(70);
-		if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+		if ((GetAsyncKeyState(VK_SPACE) & 0x8000) || (GetAsyncKeyState(VK_RETURN) & 0x8000))
 			break;
 	}
 }
@@ -244,14 +244,18 @@ void exit()
 
 void PrintFalsePrincess()
 {
-	char message[] = "\nCongratulations!\n\n With your great effort\n you've reached the terminal";
+	char message[] = "\n\n You reached here in a good mood\n\nthinking you've made it...";
+	char message2[] = "\n\n\nbut...";
+	char message3[] = "\n\nThe princess is fake.\n\n The true one is hided elsewhere!";
+	char message4[] = "\n\nYou have to utilize your wisdom\n\nto find the true one";
+
 	PrintSpecialInfor(message);
 	exit();
-	char message2[] = "\n\n\nbut...";
 	PrintSpecialInfor(message2);
 	exit();
-	char message3[] = "\n\nThe princess is fake.\n\n The true one is hided elsewhere!";
 	PrintSpecialInfor(message3);
+	exit();
+	PrintSpecialInfor(message4);
 	exit();
 }
 

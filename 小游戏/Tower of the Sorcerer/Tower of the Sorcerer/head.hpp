@@ -15,6 +15,10 @@
 #include<conio.h>
 #include<easyx.h>
 #include <string>
+
+//map
+extern int Map[FLOOR][ROW][COL];
+
 //类
 class Player {
 public:
@@ -30,7 +34,7 @@ public:
     int Exp;        // 经验值
     int yellow_key; // 黄钥匙
     int blue_key;   // 蓝钥匙
-    int red_key;   // 红钥匙
+    int red_key;    // 红钥匙
     int pickaxe;    //镐子
 };
 
@@ -42,8 +46,6 @@ public:
     int def; // 防御力
     int exp; // 经验值
     int money;
-    ////char name[20];
-    //const char* name;
 };
 //对象
 extern Monster GreenSlime; extern Monster RedSlime;
@@ -51,6 +53,7 @@ extern Monster Skeleton;  extern Monster SkeletonSoldier;
 extern Monster Bat;
 extern Monster Wizard;
 extern Monster DemonKing;
+extern Monster DemonEmperor;
 
 //函数
 //void display_map(int map[][COL]);   //控制台版本
@@ -79,8 +82,6 @@ void PrintLose();
 void PrintWin();
 void exit();
 void PrintUsePickaxe();
-//map
-extern int Map[FLOOR][ROW][COL];
 
 //audio
 void musicGameLoading();

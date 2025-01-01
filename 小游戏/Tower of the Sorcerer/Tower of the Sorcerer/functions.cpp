@@ -1,11 +1,13 @@
 #include"head.hpp"
+int OfferMoneyTimes = 0;//¹©·î¸øÅ®ÉñÏñµÄ´ÎÊı
+int meetSage = 0;
+int meetPrincess = 0;
 
 //×²Ç½Óë·ñ
 int judge_hit(int value)
 {
-	if (value == 0 || value == 1)
+	if (value == 0 || value == 1 || value == 52 || value == 53)
 	{
-		//printf("×²Ç½ÁË\n");
 		return 0;
 	}
 	return 1;
@@ -90,14 +92,58 @@ int Battle(int map[][COL], Player& p, Monster& m, char* name, \
 
 }
 
-int times = 0;//¹©·î¸øÅ®ÉñÏñµÄ´ÎÊı
 void MeetGodness(Player& p, int map[][COL], int r1,int c1,int r,int c)   //Óö¼ûºóÒªÏûÊ§£¡
 {
+	if (OfferMoneyTimes == 2 && meetPrincess==0)
+	{
+		//Íæ¼Ò×ø±êÖØÖÃ»ØÀ´ //Å®ÉñÏñ²»ÏûÊ§£¡
+		set_new_position(p.position, r1, c1);
+		return;
+	}
 	musicMeet();
-	int cost = 50* (times + 1);
-	std::string message = "\n\nWould you like to offer \n" + std::to_string(cost) + " gold coins to the goddess?\n\nYes: 1  NO: 2";
-	PrintSpecialInfor(message.c_str());
-	while (1)
+	int cost = 50* (OfferMoneyTimes + 1);
+	std::string message1 = "\n\nWould you like to offer \n" + std::to_string(cost) + " gold coins to the goddess?\n\nYes: 1  NO: 2";
+	std::string message2 = "\n\nWould you offer all your money\nto the goddess for a miracle?\n\nYes: 1  NO: 2";
+	char message3[] = "\n\n\nA new entrance is now opened";
+	if (OfferMoneyTimes < 2)
+		PrintSpecialInfor(message1.c_str());
+	//else if (OfferMoneyTimes == 2 && meetPrincess) //ÒÑ¾­¹©·îÁËÁ½´Î,±ØĞëÔÚÓöµ½¹«Ö÷Ö®ºó
+	//	PrintSpecialInfor(message2.c_str());
+
+	if (OfferMoneyTimes == 2 && meetPrincess)//µÚÈı´Î¹©·î£¬±ØĞëÔÚÓöµ½¹«Ö÷Ö®ºó
+	{
+		PrintSpecialInfor(message2.c_str());
+		while (1)
+		{
+			Sleep(70);
+			if (GetAsyncKeyState(VK_NUMPAD1) & 0x8000) //Í¬Òâ
+			{
+				while (GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
+					Sleep(30);
+				OfferMoneyTimes += 1;
+				map[r][c] = 7;   //Å®ÉñÏñÏûÊ§
+				//Íæ¼Ò×ø±êÖØÖÃ»ØÀ´ 
+				set_new_position(p.position, r1, c1);
+				p.money = 0;
+				musicLvUp();
+				Map[2][8][11] = 11;//µÚÈıÂ¥³öÏÖÂ¥Ìİ,ĞèÒªÈıÎ¬Êı×é£¡
+				PrintSpecialInfor(message3);
+				exit();
+				return;
+			}
+
+			if (GetAsyncKeyState(VK_NUMPAD2) & 0x8000) //²»Í¬Òâ
+			{
+				while (GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+					Sleep(30);
+				//Íæ¼Ò×ø±êÖØÖÃ»ØÀ´
+				set_new_position(p.position, r1, c1);
+				return;
+			}
+		}
+	}
+
+	while (1)  //Ç°Á½´Î¹©·î
 	{
 		Sleep(70);
 		if (GetAsyncKeyState(VK_NUMPAD1) & 0x8000) //Í¬Òâ
@@ -107,8 +153,8 @@ void MeetGodness(Player& p, int map[][COL], int r1,int c1,int r,int c)   //Óö¼ûº
 			if (p.money >=  cost)
 			{
 				p.money -=  cost;
-				times += 1;
-				if(times%2==1)
+				OfferMoneyTimes += 1;
+				if (OfferMoneyTimes == 1)
 				{
 					map[r][c] = 7;   //Å®ÉñÏñÏûÊ§
 					//Íæ¼Ò×ø±êÖØÖÃ»ØÀ´
@@ -117,17 +163,19 @@ void MeetGodness(Player& p, int map[][COL], int r1,int c1,int r,int c)   //Óö¼ûº
 					Sleep(600);
 					return;
 				}//É¶¶¼Ã»ÓĞ£¬¹ş¹ş¹ş
-				else //µÃÒ»¸öÉúÃü±¦Ê¯
+				else if (OfferMoneyTimes == 2)//µÃÒ»¸öÉúÃü±¦Ê¯
 				{
 					musicLvUp();
 					int defence = 2;
 					p.def += defence;
 					PrintLifeGem(defence);
-					map[r][c] = 7;   //Å®ÉñÏñÏûÊ§
+					//Å®ÉñÏñ²»ÏûÊ§£¡
 					//Íæ¼Ò×ø±êÖØÖÃ»ØÀ´
 					set_new_position(p.position, r1, c1);
 					return;
 				}
+				else
+					return;
 			}
 			else
 			{
@@ -149,8 +197,6 @@ void MeetGodness(Player& p, int map[][COL], int r1,int c1,int r,int c)   //Óö¼ûº
 	}
 }
 
-int meetSage = 0;
-int meetPrincess = 0;
 int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 	int direction_picture_number,int direction) //direction 4 5 6 7·Ö±ğ±íÊ¾ÉÏÏÂ×óÓÒ
 {
@@ -165,7 +211,6 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 			musicMeet();
 			PrintFalsePrincess();
 			map[r][c] = 7;//¼Ù¹«Ö÷ÏûÊ§
-			map[r+1][c+2] = 11;//³öÏÖÂ¥Ìİ
 			return 0;
 		}
 		return 3;//Ê¤Àû
@@ -186,10 +231,13 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 		musicMeet();
 		if(meetSage==1)
 		{
-			char message1[] = "\n\nThe tower seems a bit strange\n\nI'm not sure";
-			char message2[] = "\nBut I know\n\nthere might be something good\n\n on the third floor";
-			char message3[] = "\n\nRemember,solving a problem is  \n\nnever confined to a single way";
-			char message4[] = "\n\nHere are 10 gold coins.\n\nGood luck!";
+			char message1[] = "\n\nThe tower seems a bit strange\n\nI'm not sure if Princess is here";
+			char message2[] = "\n\nThe tower is extremely dangerous\n\nThis is the Magic Book";
+			char message3[] = "\n\nIt can turn souls of the monsters \n\nkilled into Exp to strengthen you";
+			char message4[] = "\n\nThe Monster Encyclopedia in it \n\ncontains the information I know\n(Press e to open or close)";
+			char message5[] = "\nAlso\n\nthere might be something good\n\n on the third floor";
+			char message6[] = "\n\nRemember,solving a problem is  \n\nnever confined to a single way";
+			char message7[] = "\n\n\nGood luck to you!";
 			PrintSpecialInfor(message1);
 			exit();
 			PrintSpecialInfor(message2);
@@ -198,12 +246,18 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 			exit();
 			PrintSpecialInfor(message4);
 			exit();
-			p.money += 10;
+			PrintSpecialInfor(message5);
+			exit();
+			PrintSpecialInfor(message6);
+			exit();
+			PrintSpecialInfor(message7);
+			exit();
 		}
 		else
 		{
-			char message1[] = "\n\nGood job!\n\nYou've made it to the second floor";
-			char message2[] = "\n\nTo some extent,\n\nDef is more important than Ack";
+			//char message1[] = "\n\nGood job!\n\nYou've made it to the second floor";
+			char message1[] = "\n\nI've found Princess is here,\n\nbut I'm little confused...";
+			char message2[] = "\n\nBy the way,\n\nDef may weigh more than Ack";
 			char message3[] = "\n\nHere is a Moderate Healing Potion.\n\nGood luck!";
 			PrintSpecialInfor(message1);
 			exit();
@@ -334,7 +388,13 @@ int ValidMove(int map[][COL], Player& p, int r, int c, int r1, int c1, \
 		char name[] = "Demon King";//´«ÈëÃû×Ö
 		return Battle(map, p, DemonKing, name, r1, c1, r, c, hp, direction_picture_number);
 	}
-	
+	//²»¿ÉÕ½Ê¤µÄÄ§Íõ 54
+	if (map[r][c] == 54)
+	{
+		musicBattle();
+		char name[] = "Demon Emperor";//´«ÈëÃû×Ö
+		return Battle(map, p, DemonEmperor, name, r1, c1, r, c, hp, direction_picture_number);
+	}
 	// Ò©Ë®   2 - minor_healing_potion h  3 - moderate_healing_potion H
 		//minor
 	if (map[r][c] == 2)
@@ -488,7 +548,7 @@ int play(int map[][COL],Player &p)    //Íæ¼ÒÒÆ¶¯
 	int hp = p.hp;
 	int ret;   //½ÓÊÕafterPressµÄÖµ£¬²¢ÅĞ¶Ï
 
-	//ÓÃÁíÒ»ÖÖ·½Ê½£¬ÎÊÌâ£¬°´Ò»¸ö¼ü×ßºÃ¼¸²½¡ª¡ªÍ¨¹ısleep½â¾ö
+	//°´Ò»¸ö¼ü×ßºÃ¼¸²½¡ª¡ªÍ¨¹ısleep½â¾ö
 	while (true)
 	{
 		Sleep(70);
@@ -618,7 +678,7 @@ int play(int map[][COL],Player &p)    //Íæ¼ÒÒÆ¶¯
 		}
 
 		//Í¼¼ø e
-		else if ((GetAsyncKeyState('e') & 0x8000) || (GetAsyncKeyState('E') & 0x8000))
+		else if ((GetAsyncKeyState('e') & 0x8000) || (GetAsyncKeyState('E') & 0x8000) && meetSage)
 		{ // ¼ì²âe¼ü
 			while ((GetAsyncKeyState('e') & 0x8000) || (GetAsyncKeyState('E') & 0x8000))
 			{
@@ -628,7 +688,8 @@ int play(int map[][COL],Player &p)    //Íæ¼ÒÒÆ¶¯
 			MonsterEncyclopedia(p);
 			return 0;
 		}
-		else if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)//ÍË³ö£¡
+		//ÍË³ö£¡
+		else if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
 		{
 			return -12;
 		}
