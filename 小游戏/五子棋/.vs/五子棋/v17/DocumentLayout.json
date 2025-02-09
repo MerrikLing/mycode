@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\",
+  "WorkspaceRootPath": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|solutionrelative:\u4E94\u5B50\u68CB\\game.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|solutionrelative:\u4E94\u5B50\u68CB\\FileName.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|solutionrelative:\u4E94\u5B50\u68CB\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C2E3E0C2-F4EE-48D0-BE8C-035E70849812}|\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB.vcxproj|solutionrelative:\u4E94\u5B50\u68CB\\game.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,15 +22,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "game.c",
-              "DocumentMoniker": "D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.c",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.c",
               "RelativeDocumentMoniker": "\u4E94\u5B50\u68CB\\game.c",
-              "ToolTip": "D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.c",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.c",
               "RelativeToolTip": "\u4E94\u5B50\u68CB\\game.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
@@ -39,27 +39,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "game.h",
-              "DocumentMoniker": "D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.h",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.h",
               "RelativeDocumentMoniker": "\u4E94\u5B50\u68CB\\game.h",
-              "ToolTip": "D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.h",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\game.h",
               "RelativeToolTip": "\u4E94\u5B50\u68CB\\game.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-06T22:33:44.991Z"
+              "WhenOpened": "2024-09-06T22:33:44.991Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FileName.c",
-              "DocumentMoniker": "D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\FileName.c",
+              "DocumentMoniker": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\FileName.c",
               "RelativeDocumentMoniker": "\u4E94\u5B50\u68CB\\FileName.c",
-              "ToolTip": "D:\\\u4FEE\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\FileName.c",
+              "ToolTip": "D:\\Merrik\\code\\\u5C0F\u6E38\u620F\\\u4E94\u5B50\u68CB\\\u4E94\u5B50\u68CB\\FileName.c",
               "RelativeToolTip": "\u4E94\u5B50\u68CB\\FileName.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAA8AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-09-06T22:32:54.65Z"
+              "WhenOpened": "2024-09-06T22:32:54.65Z",
+              "EditorCaption": ""
             }
           ]
         }

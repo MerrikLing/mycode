@@ -51,8 +51,8 @@ int main()
 				PrintWin();
 				break;
 			}
-			//ret 4 5 6 7 分别表示上下左右，用于楼层转换后的初始位置
-			if (f != P.position[0])
+			//ret 4 5 6 7 分别表示上下左右，用于楼层转换后的初始位置,仅用于上下楼
+			if (f == P.position[0] - 1 || f == P.position[0] + 1)
 			{ 
 				ChangeFloor(Map,P,ret);
 			}

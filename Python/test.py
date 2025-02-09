@@ -1,41 +1,105 @@
+class Link:
+    empty=() #just a symbol, It could be "I’m empty"
+    def __init__(self,first,rest=empty):  #The rest of Link is Link or empty
+        assert rest is Link.empty or isinstance(rest,Link)
+        self.first=first
+        self.rest=rest
 
-# class Link:
-#     empty=() #仅是标志，可共用
-#     def __init__(self,first,rest=empty):
-#         assert rest is Link.empty or isinstance(rest,Link)
-#         self.first=first
-#         self.rest=rest
+b = Link(4,Link(3, Link(9, Link(1))))
+p=b
+while p.rest is not Link.empty:
+    p=p.rest
+
+p.rest=Link(19)
+# display_link(b)
+
+def sum_link(l):
+    """
+    >>> b = Link(4,Link(3, Link(9, Link(1))))
+    >>> sum_link(b)
+    17
+    """
+    # ret=0       #循环版本
+    # while l is not Link.empty:
+    #     ret+=l.first
+    #     l=l.rest
+    # return ret
+
+    #递归版本
+    if l is Link.empty:
+        return 0
+    return l.first + sum_link(l.rest)
+
+b = Link(4,Link(3, Link(9, Link(1))))
+sum_link(b)
+
+def display_link(l):
+    """
+    >>> a = Link(1, Link(2, Link(1)))
+    >>> b = Link(3, Link(2, Link(1)))
+    >>> combined = Link(a, Link(b))
+    >>> display_link(combined)
+    '<< 1 2 1 >< 3 2 1 > >'
+    """
+    ret='<'
+    while l is not Link.empty:
+        if isinstance(l.first,Link):
+            ret+=display_link(l.first)
+        else:
+            ret+=" "+str(l.first)
+        l=l.rest
+    return ret+" >"
+
+display_link(b)
+
+def map_link(l,f):
+    """Given a linked list, lnk, and a one argument function, f, return 
+        a new linked list obtained from applying f to each element of lnk
+    >>> b = Link(4,Link(3, Link(9, Link(1))))
+    >>> display_link(map_link(b,lambda x:3+x))
+    '< 7 6 12 4 >'
+    """
+    if l is Link.empty:
+        return l
+    return Link(f(l.first),map_link(l.rest,f))
 
 
-# def sum_Link(l):
-#     # if l.rest==Link.empty: ——Link可以是空！
-#     #     return l.first
-#     if l is Link.empty:
-#         return 0
-#     return l.first + sum_Link(l.rest)
+display_link(map_link(b,lambda x:3+x))
 
-# def display_Link(l):
-#     str_num=''
-#     while l is not Link.empty:
-#         if isinstance(l.first,Link):
-#             str_num+=display_Link(l.first)
-#         else:
-#             str_num+=' '+str(l.first)
-#         l=l.rest
-#     return '<'+str_num+'>'
+def mutate_link(l,f):
+    """Given a linked list, lnk, and a one argument function, f, mutate 
+        the linked list by applying f to each element of it
+    >>> b = Link(4,Link(3, Link(9, Link(1))))
+    >>> mutate_link(b,lambda x:3+x)
+    >>> display_link(b)
+    '< 7 6 12 4 >'
+    """
+    # #递归版本
+    # if l is Link.empty:
+    #     return
+    # l.first=f(l.first)
+    # mutate_link(l.rest,f)
 
-# def map_Link(l,f):
-#     # #递归版本
-#     # if l is Link.empty:
-#     #     return l
-#     # else:
-#     #     a=map_Link(l.rest,f)  
-#     # return Link(f(l.first),a)
+    #循环版本
+    #较难理解，可以用Python tutor跑一遍辅助理解
+    while l is not Link.empty:    #note thatt the original lnk will not shrink!
+        l.first=f(l.first)
+        l=l.rest
 
-#     #循环版本
-#     while l is not Link.empty:
-#         l.first=f(l.first)
-#         l=l.rest
+def reverse_link(l):
+    """return a new linked list whose order of elements is reversed
+    >>> b = Link(4,Link(3, Link(9, Link(1))))
+    >>> display_link(reverse_link(b))
+    '< 1 9 3 4 >'
+    """
+    if l is Link.empty or l.rest is Link.empty:
+        return l
+    rest=reverse_link(l.rest)
+    p=rest
+    while p.rest is not Link.empty:
+        p=p.rest
+    p.rest=Link(l.first)
+    return rest
 
 
 # l1=Link(1,Link(2,Link(3)))
@@ -198,11 +262,49 @@
 
 # is_bst(Tree(1,[Tree(6,[Tree(0)])]))
 # is_bst(Tree(1, [Tree(2, [Tree(3, [Tree(4)])])]))
-class pet:
-    n=1
-class dog(pet):
-    n=2
-class doggy(dog):
-    def __init__(self):
-        pet.__init__(self)
-print(doggy().n)
+# class account:
+#     def __init__(self,name,money):
+#         self.holder=name
+#         self.balance=money
+    
+#     def __str__(self):
+#         return "This is an account of "+self.holder
+    
+#     def __repr__(self):
+#         return "It is an account of "+self.holder
+    
+#     def __add__(self,other):
+#         if isinstance(other,account):
+#             return f'You got two account, and the total money is {self.balance + other.balance}'
+#         else:
+#             return 'You are trying sth new'
+    
+#     def __radd__(self,other):
+#         if isinstance(other,account):
+#             return f'The total money is {self.balance + other.balance}'
+#         else:
+#             return 'You are trying something new!'
+
+# j=account("Jim",666)
+# t=account("Tom",120)
+# 2 + j
+
+class A:
+    def __init__(self,name):
+        self.name=name
+    def __repr__(self):
+        return self.name
+
+A('one')
+repr(A('one'))
+print(A('one'))
+
+# class clown:
+#     print(1)
+#     def dance(self):
+#         return 'No, thanks'
+#     print(1)
+#     def laugh(self):
+#         return "haha"
+    
+# a=clown()
