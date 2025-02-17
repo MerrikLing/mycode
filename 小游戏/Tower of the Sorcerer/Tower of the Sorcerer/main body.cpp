@@ -23,8 +23,8 @@ int main()
 		Player P;            //初始化
 		initgraph(850, 650, EX_NOCLOSE); // 初始化一个窗口
 		LoadImages();        // 加载图片素材
-		StartImage();        // 游戏开始画面
-		InventInfor();       //制作者信息
+		//StartImage();        // 游戏开始画面
+		//InventInfor();       //制作者信息
 		////背景音乐
 		PlaySound(TEXT("ZeldaBackground.wav"), 0, SND_FILENAME | SND_ASYNC | SND_LOOP); //这个函数只适用于处理单个音频！
 		InitImage();         // 打印游戏过程中始终不变的图片

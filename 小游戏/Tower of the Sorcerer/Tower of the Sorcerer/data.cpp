@@ -20,7 +20,6 @@ Monster BloodBat(40, 60, 2, 25, 15);
 Monster Orc(100, 100, 10, 40, 40);
 Monster DemonKing(700, 150, 15, 200, 100);
 Monster DemonEmperor(1000, 150, 20, 500, 100);
-//Monster Sele();
 
 
 Player::Player()
